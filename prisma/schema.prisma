@@ -17,7 +17,7 @@ model Coin {
   denominacion  String
   estado        String
   descripcion   String?
-  imagen        String?
+  imagen        String   // Imagen obligatoria
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   
@@ -34,7 +34,7 @@ model Banknote {
   denominacion  String
   estado        String?
   descripcion   String?
-  imagen        String?
+  imagen        String   // Imagen obligatoria
   createdAt     DateTime @default(now())
   updatedAt     DateTime @updatedAt
   
