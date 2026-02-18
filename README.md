@@ -2,44 +2,44 @@
 
 Sistema web de gestión de colecciones de monedas y billetes de colección.
 
-## 🚀 Características del Sprint 1
+## Características del Sprint 1
 
 ### Historias de Usuario Implementadas:
 
-✅ **HU-01: Registro de usuarios**
+**HU-01: Registro de usuarios**
 - Formulario de registro con validación
 - Hash seguro de contraseñas con bcrypt
 - Validación de campos con Zod
 
-✅ **HU-02: Inicio de sesión**
+**HU-02: Inicio de sesión**
 - Autenticación con NextAuth.js v5
 - Sesiones seguras con JWT
 - Redirect automático al dashboard
 
-✅ **HU-03: Cierre de sesión**
+**HU-03: Cierre de sesión**
 - Logout seguro con NextAuth
 - Limpieza de sesión
 
-✅ **HU-05: Registro de monedas**
+**HU-05: Registro de monedas**
 - Formulario completo: país, año, denominación, estado
 - Validación de datos
 - Asociación a usuario autenticado
 
-✅ **HU-06: Registro de billetes**
+**HU-06: Registro de billetes**
 - Formulario con información básica
 - Campos opcionales para mayor flexibilidad
 
-✅ **HU-07: Visualización de colección**
+**HU-07: Visualización de colección**
 - Dashboard interactivo
 - Estadísticas de la colección
 - Listado de monedas y billetes
 
-✅ **HU-11: Colección privada**
+**HU-11: Colección privada**
 - Cada usuario solo ve su colección
 - Middleware de protección de rutas
 - Asociación segura usuario-colección
 
-## 🛠️ Stack Tecnológico
+## Stack Tecnológico
 
 - **Framework**: Next.js 16 (App Router)
 - **Lenguaje**: TypeScript
@@ -49,7 +49,7 @@ Sistema web de gestión de colecciones de monedas y billetes de colección.
 - **Validación**: Zod
 - **Hosting**: Vercel (recomendado)
 
-## 📦 Instalación y Configuración
+## Instalación y Configuración
 
 ### 1. Clonar el repositorio e instalar dependencias
 
@@ -89,7 +89,7 @@ npx prisma migrate dev --name init_supabase
 npx prisma generate
 ```
 
-## 🚀 Ejecución
+## Ejecución
 
 ### Modo desarrollo:
 ```bash
@@ -104,7 +104,7 @@ npm run build
 npm start
 ```
 
-## 🌐 Despliegue
+## Despliegue
 
 ### Vercel (Recomendado)
 
@@ -119,7 +119,7 @@ npm start
 
 Tu aplicación estará disponible en `https://tu-proyecto.vercel.app`
 
-## 📁 Estructura del Proyecto
+## Estructura del Proyecto
 
 ```
 miniproyecto/
@@ -150,7 +150,7 @@ Los datos de autenticación (usuarios, sesiones) son manejados automáticamente 
 - estado, descripcion, imagen (opcional)
 - userId (relación con auth.users de Supabase)
 
-## 🔐 Seguridad
+## Seguridad
 
 - Autenticación robusta con Supabase Auth
 - Contraseñas hasheadas automáticamente
@@ -180,16 +180,16 @@ Los datos de autenticación (usuarios, sesiones) son manejados automáticamente 
 - HU-18: Notificaciones push
 - HU-19: Perfil público con estadísticas
 
-## ✨ Ventajas de Supabase
+## Ventajas de Supabase
 
-- ✅ **PostgreSQL en la nube** - Escalable y robusto
-- ✅ **Auth integrada** - No necesitas backend adicional
-- ✅ **Storage para imágenes** - Listo para Sprint 2
-- ✅ **Real-time subscriptions** - Para chat y notificaciones
-- ✅ **Row Level Security** - Seguridad a nivel de base de datos
-- ✅ **Dashboard visual** - Administra datos fácilmente
-- ✅ **Gratis** - 500MB DB, 1GB Storage
-- ✅ **Fácil depliegue** - Compatible con Vercel
+- **PostgreSQL en la nube** - Escalable y robusto
+- **Auth integrada** - No necesitas backend adicional
+- **Storage para imágenes** - Listo para Sprint 2
+- **Real-time subscriptions** - Para chat y notificaciones
+- **Row Level Security** - Seguridad a nivel de base de datos
+- **Dashboard visual** - Administra datos fácilmente
+- **Gratis** - 500MB DB, 1GB Storage
+- **Fácil depliegue** - Compatible con Vercel
 - HU-08: Edición de monedas/billetes
 - HU-09: Búsqueda y filtrado avanzado
 - HU-10: Subida de imágenes
@@ -207,16 +207,16 @@ Los datos de autenticación (usuarios, sesiones) son manejados automáticamente 
 - HU-18: Notificaciones
 - HU-19: Perfil público de usuario
 
-## 🧪 Pruebas de Aceptación
+## Pruebas de Aceptación
 
 Todas las historias de usuario incluyen sus pruebas de aceptación implementadas:
 
-- ✅ Registro: Validación de campos, email único, contraseña segura
-- ✅ Login: Credenciales válidas, redirect al dashboard
-- ✅ Colección: Visualización, adición, eliminación con confirmación
-- ✅ Privacidad: Cada usuario solo accede a su colección
+- Registro: Validación de campos, email único, contraseña segura
+- Login: Credenciales válidas, redirect al dashboard
+- Colección: Visualización, adición, eliminación con confirmación
+- Privacidad: Cada usuario solo accede a su colección
 
-## 👨‍💻 Desarrollo
+## Desarrollo
 
 Este proyecto usa:
 - ESLint para linting
