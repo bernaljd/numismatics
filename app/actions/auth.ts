@@ -26,7 +26,7 @@ export async function registerUser(formData: FormData) {
   })
 
   if (!validatedFields.success) {
-    throw new Error("Datos inválidos. Por favor verifica los campos.")
+    return { error: "Datos inválidos. Por favor verifica los campos." }
   }
 
   const { name, email, password } = validatedFields.data
@@ -43,7 +43,11 @@ export async function registerUser(formData: FormData) {
   })
 
   if (error) {
-    throw new Error(error.message)
+    // Mensaje amigable en lugar del error técnico
+    if (error.message.includes("already registered") || error.message.includes("User already registered")) {
+      return { error: "Este correo electrónico ya está registrado. Por favor, inicia sesión." }
+    }
+    return { error: "No se pudo crear la cuenta. Por favor, intenta de nuevo." }
   }
 
   redirect("/login")
@@ -56,7 +60,7 @@ export async function loginUser(formData: FormData) {
   })
 
   if (!validatedFields.success) {
-    throw new Error("Por favor ingresa email y contraseña válidos")
+    return { error: "Por favor ingresa email y contraseña válidos" }
   }
 
   const { email, password } = validatedFields.data
@@ -68,7 +72,8 @@ export async function loginUser(formData: FormData) {
   })
 
   if (error) {
-    throw new Error(error.message)
+    // Mensaje amigable en lugar del error técnico de la base de datos
+    return { error: "Usuario o contraseña incorrectos. Por favor, intenta de nuevo." }
   }
 
   revalidatePath('/', 'layout')

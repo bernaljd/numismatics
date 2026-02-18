@@ -1,6 +1,24 @@
+"use client"
+
 import { registerUser } from "../actions/auth"
+import { useState } from "react"
 
 export default function RegisterPage() {
+  const [error, setError] = useState<string | null>(null)
+  const [isLoading, setIsLoading] = useState(false)
+
+  async function handleSubmit(formData: FormData) {
+    setError(null)
+    setIsLoading(true)
+    
+    const result = await registerUser(formData)
+    if (result?.error) {
+      setError(result.error)
+      setIsLoading(false)
+    }
+    // Si no hay error, el redirect manejará la navegación automáticamente
+  }
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 px-4 py-8">
       <div className="max-w-md w-full bg-white dark:bg-gray-800 rounded-lg shadow-xl p-6 sm:p-8">
@@ -13,7 +31,15 @@ export default function RegisterPage() {
           </p>
         </div>
 
-        <form action={registerUser} className="space-y-6">
+        {error && (
+          <div className="mb-4 p-4 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg">
+            <p className="text-sm text-red-600 dark:text-red-400 text-center">
+              {error}
+            </p>
+          </div>
+        )}
+
+        <form action={handleSubmit} className="space-y-6">
           <div>
             <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Nombre completo
@@ -59,9 +85,10 @@ export default function RegisterPage() {
 
           <button
             type="submit"
-            className="w-full bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-4 rounded-lg transition-colors"
+            disabled={isLoading}
+            className="w-full bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 disabled:cursor-not-allowed text-white font-semibold py-2 px-4 rounded-lg transition-colors"
           >
-            Registrarse
+            {isLoading ? "Registrando..." : "Registrarse"}
           </button>
         </form>
 

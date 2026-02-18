@@ -1,10 +1,8 @@
 import { createClient } from "@/lib/supabase/server"
 import { prisma } from "@/lib/prisma"
 import { redirect } from "next/navigation"
-import CoinCard from "../components/CoinCard"
-import BanknoteCard from "../components/BanknoteCard"
+import CollectionGrid from "../components/CollectionGrid"
 import { signOut } from "../actions/auth"
-import type { Banknote, Coin } from "@prisma/client"
 
 export default async function DashboardPage() {
   const supabase = await createClient()
@@ -124,31 +122,7 @@ export default async function DashboardPage() {
         </div>
 
         {/* Collection */}
-        {totalItems === 0 ? (
-          <div className="bg-white dark:bg-gray-800 rounded-lg shadow-lg p-8 sm:p-12 text-center">
-            <div className="text-4xl sm:text-6xl mb-4">📭</div>
-            <h2 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-2">
-              Tu colección está vacía
-            </h2>
-            <p className="text-gray-600 dark:text-gray-400 mb-6">
-              Comienza agregando tu primera moneda o billete
-            </p>
-          </div>
-        ) : (
-          <div>
-            <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6">
-              Tu Colección ({totalItems} piezas)
-            </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {coins.map((coin: Coin) => (
-                <CoinCard key={coin.id} coin={coin} />
-              ))}
-              {banknotes.map((banknote: Banknote) => (
-                <BanknoteCard key={banknote.id} banknote={banknote} />
-              ))}
-            </div>
-          </div>
-        )}
+        <CollectionGrid coins={coins} banknotes={banknotes} />
       </div>
     </div>
   )

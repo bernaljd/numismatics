@@ -1,6 +1,20 @@
+"use client"
+
 import { addBanknote } from "@/app/actions/collection"
+import YearInput from "@/app/components/YearInput"
 
 const estados = ["Excelente", "Muy Bueno", "Bueno", "Regular", "Pobre"]
+
+const paises = [
+  "Argentina", "Bolivia", "Brasil", "Canadá", "Chile", "Colombia", "Costa Rica",
+  "Cuba", "Ecuador", "El Salvador", "España", "Estados Unidos", "Guatemala",
+  "Honduras", "México", "Nicaragua", "Panamá", "Paraguay", "Perú",
+  "Puerto Rico", "República Dominicana", "Uruguay", "Venezuela",
+  "Alemania", "Francia", "Italia", "Reino Unido", "Portugal", "Grecia",
+  "Suiza", "Bélgica", "Holanda", "Austria", "Suecia", "Noruega",
+  "China", "Japón", "Corea del Sur", "India", "Tailandia", "Singapur",
+  "Australia", "Nueva Zelanda", "Sudáfrica", "Egipto", "Marruecos"
+]
 
 export default function AddBanknotePage() {
   return (
@@ -21,30 +35,24 @@ export default function AddBanknotePage() {
               <label htmlFor="pais" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 País
               </label>
-              <input
-                type="text"
+              <select
                 id="pais"
                 name="pais"
                 required
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                placeholder="ej. México, España, Argentina"
-              />
+              >
+                <option value="">Selecciona un país</option>
+                {paises.map(pais => (
+                  <option key={pais} value={pais}>{pais}</option>
+                ))}
+              </select>
             </div>
 
             <div>
               <label htmlFor="anio" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                 Año
               </label>
-              <input
-                type="number"
-                id="anio"
-                name="anio"
-                required
-                min="1"
-                max={new Date().getFullYear()}
-                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
-                placeholder="ej. 2010"
-              />
+              <YearInput />
             </div>
 
             <div>
@@ -88,6 +96,23 @@ export default function AddBanknotePage() {
                 className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white"
                 placeholder="Notas adicionales sobre el billete..."
               />
+            </div>
+
+            <div>
+              <label htmlFor="imagen" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
+                Imagen del billete
+              </label>
+              <input
+                type="file"
+                id="imagen"
+                name="imagen"
+                required
+                accept="image/*"
+                className="w-full px-4 py-2 border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-transparent dark:bg-gray-700 dark:text-white file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 dark:file:bg-indigo-900 dark:file:text-indigo-200"
+              />
+              <p className="mt-1 text-xs text-gray-500 dark:text-gray-400">
+                Sube una imagen del billete (JPG, PNG, WEBP, etc.)
+              </p>
             </div>
 
             <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
